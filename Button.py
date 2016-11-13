@@ -22,3 +22,6 @@ class Button(object):
         if self.name:
             canvas.create_text((l+r)/2, (t+b)/2, text=self.name,
                                 font="Helvetica 24 bold")
+
+class CircleButton(object):
+    

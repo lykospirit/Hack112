@@ -2,7 +2,7 @@
 # Main
 #####
 
-from Button import Button
+from Button import *
 
 def initMain(data):
     data.startButton = Button(data.width/10, data.height/2,

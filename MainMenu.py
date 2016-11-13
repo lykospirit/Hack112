@@ -2,7 +2,7 @@
 # Main Menu
 #####
 
-from Button import Button
+from Button import *
 
 def initMainMenu(data):
     pass

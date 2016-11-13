@@ -17,8 +17,8 @@ def keyPressed(event, data):
     pass
 
 def timerFired(data):
-    pass
-
+    if data.mode == "workout": workoutTimerFired(data)
+        
 def init(data):
     data.mode = "main"
     data.activeButtons = []
@@ -27,6 +27,7 @@ def init(data):
 
     initMain(data)
     data.mode = "workout" # TEMPTEMPTEMPTEMPTEMPTEMP
+    initWorkout(data) # TEMPTEMPTEMPTEMPTEMPTEMp
 
 def mousePressed(event, data):
     for button in range(0, len(data.activeButtons), -1):

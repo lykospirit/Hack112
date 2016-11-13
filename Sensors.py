@@ -1,7 +1,7 @@
 ##### Sensor functionality
 
-#def getDistance(data):
-#    try: return data.distance #TEMPTEMPTEMP
+#def getDistance():
+#    try: return 42 #TEMPTEMPTEMP
 #    except: return 42
 
 import serial

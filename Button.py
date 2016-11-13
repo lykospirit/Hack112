@@ -36,4 +36,4 @@ class CircleButton(Button):
         canvas.create_oval(self.l, self.t, self.r, self.b, fill="cyan")
         if self.name:
             canvas.create_text(self.cx, self.cy, text=self.name,
-                                font="Helvetica 24 bold")
+                                                    font="Helvetica 24 bold")

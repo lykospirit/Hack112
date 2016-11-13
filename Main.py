@@ -3,6 +3,7 @@
 #####
 
 from Button import *
+from Sensors import *
 
 def initMain(data):
     data.startButton = CircleButton(data.width/10, data.height/2,

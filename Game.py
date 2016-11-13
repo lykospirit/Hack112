@@ -3,6 +3,7 @@
 #####
 
 from Button import *
+from Sensors import *
 
 def initGame(data):
     data.activeObstacles = []

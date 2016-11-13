@@ -3,6 +3,7 @@
 #####
 
 from Button import *
+from Sensors import *
 
 def modeMenuMousePressed(event, data):
     pass

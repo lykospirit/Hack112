@@ -2,7 +2,7 @@
 # Mode Menu
 #####
 
-from Button import Button
+from Button import *
 
 def modeMenuMousePressed(event, data):
     pass

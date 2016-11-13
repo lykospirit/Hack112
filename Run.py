@@ -39,10 +39,9 @@ def init(data):
     initModeMenu(data)
 
     data.backgroundColor = "#f9feff"
-    
-    data.mode = "workout"
+
+    data.mode = "main"
     initWorkout(data)
-    
 
 def mousePressed(event, data):
     for button in range(len(data.activeButtons)-1, -1, -1):
@@ -71,7 +70,7 @@ def redrawAll(canvas, data):
     elif (data.mode == "workout"): workoutRedrawAll(canvas, data)
 
 ### run function, as used in the CMU 15-112 course. Credit: David Kosbie
-def run(width=480, height=320):
+def run(width=480, height=280):
     def redrawAllWrapper(canvas, data):
         canvas.delete(ALL)
         redrawAll(canvas, data)

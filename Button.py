@@ -40,3 +40,7 @@ class CircleButton(Button):
 
 class ImageButton(Button):
     def __init__(self, l, t, r, b, name="", parent="", img=""):
+        super().__init__(l, t, r, b, name, parent)
+        self.img = img
+
+    

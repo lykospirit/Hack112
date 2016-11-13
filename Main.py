@@ -5,9 +5,9 @@
 from Button import *
 
 def initMain(data):
-    data.startButton = Button(data.width/10, data.height/2,
+    data.startButton = CircleButton(data.width/10, data.height/2,
         data.width*2/5, data.height*9/10, "Start")
-    data.modeButton = Button(data.width*3/5, data.height/2,
+    data.modeButton = CircleButton(data.width*3/5, data.height/2,
         data.width*9/10, data.height*9/10, "Mode")
     data.openMenuButton = Button(0, 0, 50, 50)
 

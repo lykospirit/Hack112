@@ -41,6 +41,8 @@ class CircleButton(Button):
 class ImageButton(Button):
     def __init__(self, l, t, img, name="", parent=""):
         self.img = PhotoImage(file=img)
+        label = Label(image=self.img)
+        label.image = self.img
         im = Image.open(img)
         self.imgWidth, self.imgHeight = im.size
         super().__init__(l, t, l+self.imgWidth, t+self.imgHeight, name, parent)

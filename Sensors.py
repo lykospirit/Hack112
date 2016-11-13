@@ -10,7 +10,10 @@ import time
 try:
     ser = serial.Serial('/dev/ttyACM0',9600)
 except:
-    ser = serial.Serial('/dev/ttyACM1',9600)
+    try:
+        ser = serial.Serial('/dev/ttyACM1',9600)
+    except:
+        ser = serial.Serial('COM3', 9600)
 
 def getDistance():
     serialInput = ser.readline()

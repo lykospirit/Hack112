@@ -24,7 +24,7 @@ def gameTimerFired(data):
     if (data.gameOver == True): return
     data.timeElapsed += 1 #in twentieths of seconds approx.
     for obstacle in data.activeObstacles:
-        obstacle.x -= 6
+        obstacle.x -= 30
         if (obstacle.x < data.player.x and obstacle.type == "low"
                 and obstacle.scored == False):
             data.score += 1
@@ -33,7 +33,7 @@ def gameTimerFired(data):
             data.remove = True
         if (data.player.isTouching(obstacle)):
             data.gameOver = True
-    if data.timeElapsed%20 == 0:
+    if data.timeElapsed%7 == 0:
         newObstacle = Obstacle(data.obs, data)
         data.activeObstacles.append(newObstacle)
         if (data.obs) == "low": data.obs = "high"
@@ -108,16 +108,17 @@ class Player(object):
     def drawPlayer(self, canvas):
         player = ImageCircleButton(self.x-8, self.y-15, img="kosbie.png")
         player.drawButton(canvas)
+        # canvas.create_oval(self.x-8, self.y-15, self.x+8, self.y+15, fill="cyan")
 
     def movePlayer(self, data):
         if (data.position == "Up"):
             if (self.y > self.highest):
-                self.y -= 15
+                self.y -= 40
             if (self.y < self.highest):
                 self.y = self.highest
         elif (data.position == "Down"):
             if (self.y < self.lowest):
-                self.y += 15
+                self.y += 40
             if (self.y > self.lowest):
                 self.y = self.lowest
         self.updateBounds()

@@ -8,8 +8,9 @@ from Main import *
 from Workout import *
 from ModeMenu import *
 from MainMenu import *
-# from Sensors import *
+from Sensors import *
 from PIL import Image
+import time
 
 #####
 # Run App
@@ -22,7 +23,7 @@ def keyPressed(event, data): #TEMPTEMPTEMPTEMP
         data.distance += 10
 
 def timerFired(data):
-    # data.distance = getDistance()
+    data.distance = getDistance()
     if data.mode == "workout": workoutTimerFired(data)
 
 def init(data):
@@ -33,12 +34,15 @@ def init(data):
     data.mode = "main"
     data.workoutMode = "hang"
     data.backgroundColor = "#f9feff"
+    data.time = time.time()
 
     data.upThreshold = 25
     data.position = "Down"
-    # data.distance = getDistance()
+    data.distance = getDistance()
 
     data.obstacleImage = PhotoImage(file="Obstacles.png")
+    label = Label(image=data.obstacleImage)
+    label.image = data.obstacleImage
 
     initMain(data)
     initWorkout(data)
@@ -90,17 +94,21 @@ def run(width=480, height=280):
         redrawAllWrapper(canvas, data)
 
     def timerFiredWrapper(canvas, data):
+        # while True:
+        #     if time.time() - data.time > 0:
         timerFired(data)
         redrawAllWrapper(canvas, data)
+        #         data.time = time.time()
         # pause, then call timerFired again
         canvas.after(data.timerDelay, timerFiredWrapper, canvas, data)
+
 
     # Set up data and call init
     class Struct(object): pass
     data = Struct()
     data.width = width
     data.height = height
-    data.timerDelay = 50 # milliseconds
+    data.timerDelay = 10 # milliseconds
     root = Tk()
     init(data)
     # create the root and the canvas

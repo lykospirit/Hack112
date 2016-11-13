@@ -10,12 +10,12 @@ from Main import *
 def initModeMenu(data):
     data.modeMenuBkgOpc = 0
     data.greyBk = ImageButton(0, 0, img="temp.png")
-    data.hangBtn = ImageCircleButton(105, 55, img="hang.png", name="hang", parent="ModeMenu")
-    data.repPullBtn = ImageCircleButton(205, 55, img="repPull.png", name="repPull", parent="ModeMenu")
-    data.repPushBtn = ImageCircleButton(305, 55, img="repPush.png", name="repPush", parent="ModeMenu")
-    data.gamePullBtn = ImageCircleButton(105, 155, img="gamePull.png", name="gamePull", parent="ModeMenu")
-    data.gamePushBtn = ImageCircleButton(205, 155, img="gamePush.png", name="gamePush", parent="ModeMenu")
-    data.customBtn = ImageCircleButton(305, 155, img="custom.png", name="custom", parent="ModeMenu")
+    data.hangBtn = ImageCircleButton(105, 50, img="hang.png", name="hang", parent="ModeMenu")
+    data.repPullBtn = ImageCircleButton(205, 50, img="repPull.png", name="repPull", parent="ModeMenu")
+    data.repPushBtn = ImageCircleButton(305, 50, img="repPush.png", name="repPush", parent="ModeMenu")
+    data.gamePullBtn = ImageCircleButton(105, 150, img="gamePull.png", name="gamePull", parent="ModeMenu")
+    data.gamePushBtn = ImageCircleButton(205, 150, img="gamePush.png", name="gamePush", parent="ModeMenu")
+    data.customBtn = ImageCircleButton(305, 150, img="custom.png", name="custom", parent="ModeMenu")
 
     data.activeButtons = []
     data.activeButtons.append(data.greyBk)
@@ -41,8 +41,8 @@ def modeMenuTimerFired(data):
 def modeMenuRedrawAll(canvas, data):
     if (data.modeMenuActive and data.modeMenuBkgOpc<120) or (not data.modeMenuActive and data.modeMenuBkgOpc>0):
         if data.modeMenuActive and data.modeMenuBkgOpc<120:
-            data.modeMenuBkgOpc += 30
-        else: data.modeMenuBkgOpc -= 30
+            data.modeMenuBkgOpc += 40
+        else: data.modeMenuBkgOpc -= 40
         bkg = Image.open('mainBkgrnd.png')
         bkgrnd = Image.new('RGBA', bkg.size)
         bkgrnd.paste(bkg)
@@ -59,3 +59,10 @@ def modeMenuRedrawAll(canvas, data):
         data.gamePullBtn.drawButton(canvas)
         data.gamePushBtn.drawButton(canvas)
         data.customBtn.drawButton(canvas)
+
+        canvas.create_text(140, 130, text="Hang", font="Helvetica 10")
+        canvas.create_text(240, 130, text="Reps", font="Helvetica 10")
+        canvas.create_text(340, 130, text="Reps", font="Helvetica 10")
+        canvas.create_text(140, 230, text="Game", font="Helvetica 10")
+        canvas.create_text(240, 230, text="Game", font="Helvetica 10")
+        canvas.create_text(340, 230, text="Custom", font="Helvetica 10")

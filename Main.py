@@ -5,6 +5,9 @@
 from Button import *
 from MainMenu import *
 from ModeMenu import *
+from Game import *
+from Hang import *
+from Reps import *
 
 def initMain(data):
     startButtonRad = 110
@@ -14,8 +17,8 @@ def initMain(data):
     modeButtonCx = 360
     modeButtonCy = 200
     modeButtonImg = "%s.png" % data.workoutMode
-    data.startButton = CircleButton(startButtonCx-startButtonRad, startButtonCy-startButtonRad,
-        startButtonCx+startButtonRad, startButtonCy+startButtonRad, name="Start", color="#06a8ac")
+    data.startButton = ImageCircleButton(startButtonCx-startButtonRad, startButtonCy-startButtonRad,
+                                                    name="Start", img="playIcon.png")
     data.modeButton = ImageCircleButton(modeButtonCx-modeButtonRad, modeButtonCy-modeButtonRad,
                                                     name="Mode", img=modeButtonImg)
     data.openMenuButton = ImageButton(0, 0, name="Menu", img="menuIcon.png")
@@ -34,6 +37,9 @@ def mainMousePressed(event, data, button):
         data.modeMenuActive = True
     elif button.name == 'Start':
         data.mode = 'workout'
+        if data.workoutMode == "gamePull" or data.workoutMode == "gamePush": initGame(data)
+        elif data.workoutMode == "repPull" or data.workoutMode == "repPush": initReps(data)
+        elif data.workoutMode == "hang": initHang(data)
 
 def mainTimerFired(data):
     pass

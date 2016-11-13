@@ -6,6 +6,7 @@ from Button import *
 from Game import *
 from Reps import *
 from Hang import *
+from Sensors import *
 
 def initWorkout(data):
     pass

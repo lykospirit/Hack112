@@ -3,11 +3,12 @@
 #####
 
 from Button import *
+from Sensors import *
 import time
 
 def initHang(data):
     data.startTime = time.time()
-    data.hangTime = 10
+    data.hangTime = 20
     data.hangTimeColor = "white"
 
 def hangMousePressed(event, data):

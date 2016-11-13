@@ -10,6 +10,8 @@ def initMainMenu(data):
     data.profilePic = "kosbieProfile.png"
     data.profileName = "112 God"
     data.workoutButton = Button(0, 40, 160, 80, name="workout", color="#92d4be", parent="MainMenu")
+    data.profileButton = Button(0, 80, 160, 120, name="profile", color="#87cdb6", parent="MainMenu")
+    data.historyButton = Button(0, 120, 160, 160, name="history", color="#92d4be", parent="MainMenu")
 
     data.activeButtons = []
     data.activeButtons.append(data.greyBk)
@@ -24,8 +26,8 @@ def mainMenuTimerFired(data):
 def mainMenuRedrawAll(canvas, data):
     if (data.mainMenuActive and data.mainMenuBkgOpc<120) or (not data.mainMenuActive and data.mainMenuBkgOpc>0):
         if data.mainMenuActive and data.mainMenuBkgOpc<120:
-            data.mainMenuBkgOpc += 30
-        else: data.mainMenuBkgOpc -= 30
+            data.mainMenuBkgOpc += 40
+        else: data.mainMenuBkgOpc -= 40
         bkg = Image.open('mainBkgrnd.png')
         bkgrnd = Image.new('RGBA', bkg.size)
         bkgrnd.paste(bkg)
@@ -41,4 +43,8 @@ def mainMenuRedrawAll(canvas, data):
         kosbie.drawButton(canvas)
         canvas.create_text(50, 20, anchor="w", text=data.profileName, font="Helvetica 10 bold", fill="white")
         data.workoutButton.drawButton(canvas)
-        canvas.create_text(30, 60, anchor="w", text="Workout", font="Helvetica 10 bold", fill="black")
+        data.profileButton.drawButton(canvas)
+        data.historyButton.drawButton(canvas)
+        canvas.create_text(25, 60, anchor="w", text="Workout", font="Helvetica 10 bold", fill="black")
+        canvas.create_text(25, 100, anchor="w", text="Profile", font="Helvetica 10 bold", fill="black")
+        canvas.create_text(25, 140, anchor="w", text="History", font="Helvetica 10 bold", fill="black")

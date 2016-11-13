@@ -8,22 +8,34 @@ from Main import *
 from Workout import *
 from ModeMenu import *
 from MainMenu import *
+from Sensors import *
+
+
 
 #####
 # Run App
 #####
 
-def keyPressed(event, data):
-    pass
+def keyPressed(event, data): #TEMPTEMPTEMPTEMP
+    if (event.keysym == "Up"):
+        data.distance -= 10
+    elif (event.keysym == "Down"):
+        data.distance += 10
 
 def timerFired(data):
-    pass
+    data.distance = getDistance(data)
+    if data.mode == "workout": workoutTimerFired(data)
 
 def init(data):
     data.mode = "main"
     data.activeButtons = []
     data.mainMenuActive = False
     data.modeMenuActive = False
+    
+    data.upThreshold = 20
+    data.downThreshold = 60
+    data.position = "Down"
+    data.distance = getDistance(data)
 
     initMain(data)
 

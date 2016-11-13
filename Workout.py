@@ -6,10 +6,11 @@ from Button import *
 from Game import *
 from Reps import *
 from Hang import *
+from Sensors import *
 
 def initWorkout(data):
-    data.workoutMode = "game"
-    initGame(data)
+    data.workoutMode = "reps"
+    initReps(data)
 
 def workoutMousePressed(event, data):
     if (data.workoutMode == "game"): gameMousePressed(event, data)

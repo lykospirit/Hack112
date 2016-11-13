@@ -3,6 +3,7 @@
 #####
 
 from Button import *
+from Sensors import *
 import time
 
 def initHang(data):

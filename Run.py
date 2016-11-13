@@ -10,8 +10,6 @@ from ModeMenu import *
 from MainMenu import *
 from Sensors import *
 
-
-
 #####
 # Run App
 #####
@@ -31,12 +29,14 @@ def init(data):
     data.activeButtons = []
     data.mainMenuActive = False
     data.modeMenuActive = False
-    
+
     data.upThreshold = 20
     data.position = "Down"
     data.distance = getDistance(data)
 
     initMain(data)
+    initMainMenu(data)
+    initModeMenu(data)
 
     data.backgroundColor = "#f9feff"
     
@@ -47,23 +47,24 @@ def mousePressed(event, data):
             print(data.activeButtons[button].name)
             if data.mode == "main":
                 if data.activeButtons[button].parent == "ModeMenu":
-                    modeMenuMousePressed(event, data)
+                    modeMenuMousePressed(event, data, data.activeButtons[button])
                 elif data.activeButtons[button].parent == "MainMenu":
-                    mainMenuMousePressed(event, data)
+                    mainMenuMousePressed(event, data, data.activeButtons[button])
                 else:
-                    mainMousePressed(event, data)
+                    mainMousePressed(event, data, data.activeButtons[button])
             elif data.mode == "workout":
-                workoutMousePressed(event, data)
+                workoutMousePressed(event, data, data.activeButtons[button])
             break
 
 def redrawAll(canvas, data):
-    canvas.create_rectangle(-5, -5, data.width+5, data.height+5, fill=data.backgroundColor, width=0)
     if (data.mode == "main"):
-        mainRedrawAll(canvas, data)
         if (data.modeMenuActive == True):
             modeMenuRedrawAll(canvas, data)
         elif (data.mainMenuActive == True):
             mainMenuRedrawAll(canvas, data)
+        else:
+            canvas.create_rectangle(-5, -5, data.width+5, data.height+5, fill=data.backgroundColor, width=0)
+            mainRedrawAll(canvas, data)
     elif (data.mode == "workout"): workoutRedrawAll(canvas, data)
 
 ### run function, as used in the CMU 15-112 course. Credit: David Kosbie

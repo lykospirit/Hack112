@@ -7,8 +7,8 @@ from Sensors import *
 
 def initMainMenu(data):
     pass
-    
-def mainMenuMousePressed(event, data):
+
+def mainMenuMousePressed(event, data, button):
     if (data.workoutButton.isPressed(event.x, event.y)):
             data.mode = "workout"
     elif (data.gameButton.isPressed(event.x, event.y)):

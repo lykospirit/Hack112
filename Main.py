@@ -17,13 +17,17 @@ def initMain(data):
     data.modeButton = CircleButton(modeButtonCx-modeButtonRad, modeButtonCy-modeButtonRad,
         modeButtonCx+modeButtonRad, modeButtonCy+modeButtonRad, name="Mode", color="#f46e15")
     data.openMenuButton = ImageButton(0, 0, name="Menu", img="menuIcon.png")
-
     data.activeButtons.append(data.startButton)
     data.activeButtons.append(data.modeButton)
     data.activeButtons.append(data.openMenuButton)
 
-def mainMousePressed(event, data):
-    pass
+def mainMousePressed(event, data, button):
+    if button.name == 'Menu':
+        data.mainMenuActive = True
+    elif button.name == 'Mode':
+        data.modeMenuActive = True
+    elif button.name == 'Start':
+        data.mode = 'workout'
 
 def mainTimerFired(data):
     pass

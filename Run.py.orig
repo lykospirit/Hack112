@@ -39,7 +39,6 @@ def init(data):
     initMain(data)
 
     data.backgroundColor = "#f9feff"
-    
 
 def mousePressed(event, data):
     for button in range(len(data.activeButtons)-1, -1, -1):
@@ -92,8 +91,12 @@ def run(width=480, height=320):
     data = Struct()
     data.width = width
     data.height = height
+<<<<<<< HEAD
     data.timerDelay = 50 # milliseconds
+=======
+    data.timerDelay = 100 # milliseconds
     root = Tk()
+>>>>>>> 7601cb6d5acb03f0da14df0c2e78c95bd906d98b
     init(data)
     # create the root and the canvas
     root.wm_title("Workout Game")

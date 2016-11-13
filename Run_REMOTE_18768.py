@@ -33,13 +33,13 @@ def init(data):
     data.modeMenuActive = False
     
     data.upThreshold = 20
+    data.downThreshold = 60
     data.position = "Down"
     data.distance = getDistance(data)
 
     initMain(data)
 
     data.backgroundColor = "#f9feff"
-    
 
 def mousePressed(event, data):
     for button in range(len(data.activeButtons)-1, -1, -1):
@@ -92,7 +92,7 @@ def run(width=480, height=320):
     data = Struct()
     data.width = width
     data.height = height
-    data.timerDelay = 50 # milliseconds
+    data.timerDelay = 100 # milliseconds
     root = Tk()
     init(data)
     # create the root and the canvas

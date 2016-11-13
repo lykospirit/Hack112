@@ -37,13 +37,13 @@ def init(data):
     data.distance = getDistance(data)
 
     initMain(data)
-    data.mode = "workout" # TEMPTEMPTEMPTEMPTEMPTEMP
-    initWorkout(data) # TEMPTEMPTEMPTEMPTEMPTEMp
+
+    data.backgroundColor = "#f9feff"
 
 def mousePressed(event, data):
-    print(data.test.isPressed(event.x, event.y))
-    for button in range(0, len(data.activeButtons), -1):
+    for button in range(len(data.activeButtons)-1, -1, -1):
         if data.activeButtons[button].isPressed(event.x, event.y):
+            print(data.activeButtons[button].name)
             if data.mode == "main":
                 if data.activeButtons[button].parent == "ModeMenu":
                     modeMenuMousePressed(event, data)
@@ -56,9 +56,7 @@ def mousePressed(event, data):
             break
 
 def redrawAll(canvas, data):
-    canvas.create_rectangle(0, 0, data.width, data.height, fill="white")
-    data.test = ImageButton(10, 10, img="yogurt.gif")
-    data.test.drawButton(canvas)
+    canvas.create_rectangle(-5, -5, data.width+5, data.height+5, fill=data.backgroundColor, width=0)
     if (data.mode == "main"):
         mainRedrawAll(canvas, data)
         if (data.modeMenuActive == True):
@@ -94,9 +92,9 @@ def run(width=480, height=320):
     data.width = width
     data.height = height
     data.timerDelay = 50 # milliseconds
+    root = Tk()
     init(data)
     # create the root and the canvas
-    root = Tk()
     root.wm_title("Workout Game")
     canvas = Canvas(root, width=data.width, height=data.height)
     canvas.pack()

@@ -9,6 +9,7 @@ def initGame(data):
     data.timeElapsed = 0
     data.remove = False
     data.obs = "low"
+    data.player = Player()
 
 def gameMousePressed(event, data):
     pass
@@ -31,6 +32,7 @@ def gameTimerFired(data):
 def gameRedrawAll(canvas, data):
     for obstacle in data.activeObstacles:
         obstacle.drawObstacle(canvas)
+    data.player.drawPlayer(canvas)
 
 class Obstacle(object):
     def __init__(self, obsType, screenWidth=480, screenHeight=320):
@@ -46,5 +48,17 @@ class Obstacle(object):
         elif self.type == "high":
             canvas.create_rectangle(self.x, 0, self.x + 25, self.h/2,
                                         fill="red")
+
+class Player(object):
+    def __init__(self):
+        self.h = 320
+        self.x = 240
+        self.y = 3*self.h//4
     
+    def drawPlayer(self, canvas):
+        canvas.create_oval(self.x-8, self.y-15, self.x + 8, self.y+15,
+                                fill="cyan")
+
+
+
     

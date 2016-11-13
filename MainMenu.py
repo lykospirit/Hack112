@@ -6,7 +6,7 @@ from Button import Button
 
 def initMainMenu(data):
     pass
-
+    
 def mainMenuMousePressed(event, data):
     if (data.workoutButton.isPressed(event.x, event.y)):
             data.mode = "workout"

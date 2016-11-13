@@ -12,7 +12,8 @@ def initHang(data):
     data.hangTimeColor = "white"
 
 def hangMousePressed(event, data):
-    pass
+    data.mode = "main"
+    initMain(data)
 
 def hangTimerFired(data):
     now = time.time()
@@ -26,12 +27,14 @@ def hangTimerFired(data):
             data.startTime = now
 
 def hangRedrawAll(canvas, data):
-    canvas.create_rectangle(0, 0, 480, 320, fill="navyblue")
+    canvas.create_rectangle(0, 0, 480, 280, fill="navyblue")
     drawTime(canvas, data)
 
 def drawTime(canvas, data):
-    canvas.create_oval(180, 100, 300, 220, fill="black")
-    canvas.create_text(240, 160, text="%d" % data.hangTime,
+    canvas.create_oval(180, 80, 300, 200, fill="black")
+    canvas.create_text(240, 140, text="%d" % data.hangTime,
                         font="Helvetica 40 bold", fill=data.hangTimeColor)
+    canvas.create_text(240, 30, text="Touch anywhere to end.", fill="blue",
+                            font="Helvetica 16")
 
 

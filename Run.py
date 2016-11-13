@@ -9,6 +9,7 @@ from Workout import *
 from ModeMenu import *
 from MainMenu import *
 from Sensors import *
+from PIL import Image
 
 #####
 # Run App
@@ -21,7 +22,7 @@ def keyPressed(event, data): #TEMPTEMPTEMPTEMP
         data.distance += 10
 
 def timerFired(data):
-    data.distance = getDistance(data)
+    data.distance = getDistance()
     if data.mode == "workout": workoutTimerFired(data)
 
 def init(data):
@@ -30,9 +31,11 @@ def init(data):
     data.mainMenuActive = False
     data.modeMenuActive = False
 
-    data.upThreshold = 20
+    data.upThreshold = 25
     data.position = "Down"
-    data.distance = getDistance(data)
+    data.distance = getDistance()
+    
+    data.obstacleImage = PhotoImage(file="Obstacles.png")
 
     initMain(data)
     initMainMenu(data)

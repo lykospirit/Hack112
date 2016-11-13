@@ -1,8 +1,30 @@
 ##### Sensor functionality
 
-def getDistance(data):
-    try: return data.distance #TEMPTEMPTEMP
-    except: return 42
+#def getDistance(data):
+#    try: return data.distance #TEMPTEMPTEMP
+#    except: return 42
+
+import serial
+import time
+
+try:
+    ser = serial.Serial('/dev/ttyACMO',9600)
+except:
+    ser = serial.Serial('/dev/ttyACM1',9600)
+
+def getDistance():
+    serialInput = ser.readline()
+    try:
+        serialInput = serialInput.decode("ascii")
+        output = ""
+        for c in serialInput:
+            if c.isdigit():
+                output += c
+        output = int(serialInput)
+        return(output)
+    except:
+        return 0
+
 
 def changePosition(data): #called on every timerFired for Reps.py
             #Game.py should access getDistance() directly for finer control

@@ -64,12 +64,12 @@ def drawScore(canvas, data):
                             fill = "green")
 
 class Obstacle(object):
-    def __init__(self, obsType, screenWidth=480, screenHeight=320):
+    def __init__(self, obsType, screenWidth=480, screenHeight=280):
         self.w = screenWidth
         self.h = screenHeight
         self.type = obsType
         self.x = self.w
-        self.img = PhotoImage(file="Obstacles.png")
+        self.img = data.obstacleImage
         self.scored = False
     
     def drawObstacle(self, canvas):
@@ -86,7 +86,7 @@ class Obstacle(object):
 
 class Player(object):
     def __init__(self):
-        self.h = 320
+        self.h = 280
         self.x = 240
         self.y = 3*self.h//4
         self.lowest = 3*self.h//4

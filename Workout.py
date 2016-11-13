@@ -9,8 +9,8 @@ from Hang import *
 from Sensors import *
 
 def initWorkout(data):
-    data.workoutMode = "reps"
-    initReps(data)
+    data.workoutMode = "game"
+    initGame(data)
 
 def workoutMousePressed(event, data):
     if (data.workoutMode == "game"): gameMousePressed(event, data)
@@ -18,6 +18,7 @@ def workoutMousePressed(event, data):
     elif (data.workoutMose == "hang"): hangMousePressed(event, data)
 
 def workoutTimerFired(data):
+    changePosition(data)
     if (data.workoutMode == "game"): gameTimerFired(data)
     elif (data.workoutMode == "reps"): repsTimerFired(data)
     elif (data.workoutMode == "hang"): hangTimerFired(data)

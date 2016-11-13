@@ -8,7 +8,7 @@ import serial
 import time
 
 try:
-    ser = serial.Serial('/dev/ttyACMO',9600)
+    ser = serial.Serial('/dev/ttyACM0',9600)
 except:
     ser = serial.Serial('/dev/ttyACM1',9600)
 

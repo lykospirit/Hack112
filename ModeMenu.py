@@ -4,7 +4,7 @@
 
 from Button import *
 from tkinter import *
-from PIL import Image, ImageTk
+from PIL import Image
 from Main import *
 
 def initModeMenu(data):
@@ -52,7 +52,7 @@ def modeMenuRedrawAll(canvas, data):
     data.greyBk = ImageButton(0, 0, img="temp.png")
     data.greyBk.drawButton(canvas)
     if data.modeMenuBkgOpc >= 120:
-        canvas.create_rectangle(60, 40, 420, 280, fill="white", width=0)
+        canvas.create_rectangle(90, 40, 390, 240, fill="white", width=0)
         data.hangBtn.drawButton(canvas)
         data.repPullBtn.drawButton(canvas)
         data.repPushBtn.drawButton(canvas)

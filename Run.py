@@ -56,6 +56,7 @@ def mousePressed(event, data):
                     initMain(data)
                 elif data.activeButtons[button].parent == "MainMenu":
                     mainMenuMousePressed(event, data, data.activeButtons[button])
+                    initMain(data)
                 else:
                     mainMousePressed(event, data, data.activeButtons[button])
             elif data.mode == "workout":

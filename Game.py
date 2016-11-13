@@ -54,8 +54,9 @@ def gameRedrawAll(canvas, data):
 def drawGameOver(canvas, data):
     canvas.create_rectangle(40, 100, 440, 220, fill="black")
     canvas.create_text(240, 130, text="Game Over. Score: %d" % data.score,
-                            fill="cyan", font="Helvetica 20 bold")
-    canvas.create_text(240, 190, text="Touch anywhere to go back to the main menu.", fill="cyan", font="Helvetica 14")
+                                                fill="cyan", font="Helvetica 20 bold")
+    canvas.create_text(240, 190, text="Touch anywhere to go back to the main menu.",
+                                                fill="cyan", font="Helvetica 14")
 
 def drawScore(canvas, data):
     canvas.create_rectangle(20, 20, 80, 80, fill="black")
@@ -70,13 +71,13 @@ class Obstacle(object):
         self.x = self.w
         self.img = data.obstacleImage
         self.scored = False
-    
+
     def drawObstacle(self, canvas):
         if self.type == "low":
             canvas.create_image(self.x, self.h/2, anchor=NW, image=self.img)
         elif self.type == "high":
             canvas.create_image(self.x, 0, anchor=NW, image=self.img)
-    
+
     def getBounds(self):
         if self.type == "low":
             return (self.x, self.h/2, self.x+25, self.h)
@@ -97,17 +98,17 @@ class Player(object):
         self.left = self.x - self.width /2
         self.top = self.y - self.height / 2
         self.bot = self.y + self.height / 2
-    
+
     def updateBounds(self):
         self.right = self.x + self.width / 2
         self.left = self.x - self.width /2
         self.top = self.y - self.height / 2
         self.bot = self.y + self.height / 2
-    
+
     def drawPlayer(self, canvas):
-        canvas.create_oval(self.x-8, self.y-15, self.x + 8, self.y+15,
-                                fill="cyan")
-    
+        player = ImageCircleButton(self.x-8, self.y-15, img="kosbie.png")
+        player.drawButton(canvas)
+
     def movePlayer(self, data):
         if (data.position == "Up"):
             if (self.y > self.highest):
@@ -120,14 +121,10 @@ class Player(object):
             if (self.y > self.lowest):
                 self.y = self.lowest
         self.updateBounds()
-    
+
     def isTouching(self, other):
         if ((self.right > (other.getBounds()[0]+2) and self.right < (other.getBounds()[2]-2)) or (self.left > (other.getBounds()[0]+2) and self.left < (other.getBounds()[2]-2))):
             if ((self.top > (other.getBounds()[1]+2) and self.top < (other.getBounds()[3]-2)) or (self.bot > (other.getBounds()[1]+2) and self.bot < (other.getBounds()[3]-2))):
                 return True
         else:
             return False
-
-
-    
-    

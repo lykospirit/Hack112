@@ -37,3 +37,6 @@ class CircleButton(Button):
         if self.name:
             canvas.create_text(self.cx, self.cy, text=self.name,
                                                     font="Helvetica 24 bold")
+
+class ImageButton(Button):
+    def __init__(self, l, t, r, b, name="", parent="", img=""):

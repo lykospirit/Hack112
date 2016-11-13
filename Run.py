@@ -8,23 +8,23 @@ from Main import *
 from Workout import *
 from ModeMenu import *
 from MainMenu import *
-    
+
 #####
 # Run App
 #####
 
 def keyPressed(event, data):
     pass
-    
+
 def timerFired(data):
     pass
-        
+
 def init(data):
     data.mode = "main"
     data.activeButtons = []
     data.mainMenuActive = False
     data.modeMenuActive = False
-    
+
     initMain(data)
     data.mode = "workout" # TEMPTEMPTEMPTEMPTEMPTEMP
 
@@ -51,15 +51,13 @@ def redrawAll(canvas, data):
         elif (data.mainMenuActive == True):
             mainMenuRedrawAll(canvas, data)
     elif (data.mode == "workout"): workoutRedrawAll(canvas, data)
-    
-    
 
 ### run function, as used in the CMU 15-112 course. Credit: David Kosbie
 def run(width=480, height=320):
     def redrawAllWrapper(canvas, data):
         canvas.delete(ALL)
         redrawAll(canvas, data)
-        canvas.update()    
+        canvas.update()
 
     def mousePressedWrapper(event, canvas, data):
         mousePressed(event, data)
@@ -74,7 +72,7 @@ def run(width=480, height=320):
         redrawAllWrapper(canvas, data)
         # pause, then call timerFired again
         canvas.after(data.timerDelay, timerFiredWrapper, canvas, data)
-        
+
     # Set up data and call init
     class Struct(object): pass
     data = Struct()
@@ -99,4 +97,3 @@ def run(width=480, height=320):
 
 
 run()
-

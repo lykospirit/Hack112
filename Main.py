@@ -22,4 +22,6 @@ def mainTimerFired(data):
     pass
 
 def mainRedrawAll(canvas, data):
-    pass
+    data.openMenuButton.drawButton(canvas)
+    data.startButton.drawButton(canvas)
+    data.modeButton.drawButton(canvas)

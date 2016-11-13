@@ -12,7 +12,7 @@ def initWorkout(data):
     data.workoutMode = "reps"
     initReps(data)
 
-def workoutMousePressed(event, data):
+def workoutMousePressed(event, data, button):
     if (data.workoutMode == "game"): gameMousePressed(event, data)
     elif (data.workoutMode == "reps"): repsMousePressed(event, data)
     elif (data.workoutMose == "hang"): hangMousePressed(event, data)

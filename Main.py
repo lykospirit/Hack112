@@ -5,11 +5,17 @@
 from Button import *
 
 def initMain(data):
-    data.startButton = CircleButton(data.width/10, data.height/2,
-        data.width*2/5, data.height*9/10, "Start")
-    data.modeButton = CircleButton(data.width*3/5, data.height/2,
-        data.width*9/10, data.height*9/10, "Mode")
-    data.openMenuButton = Button(0, 0, 50, 50)
+    startButtonRad = 120
+    startButtonCx = 240
+    startButtonCy = 160
+    modeButtonRad = 55
+    modeButtonCx = 360
+    modeButtonCy = 240
+    data.startButton = CircleButton(startButtonCx-startButtonRad, startButtonCy-startButtonRad,
+        startButtonCx+startButtonRad, startButtonCy+startButtonRad, name="Start", color="#06a8ac")
+    data.modeButton = CircleButton(modeButtonCx-modeButtonRad, modeButtonCy-modeButtonRad,
+        modeButtonCx+modeButtonRad, modeButtonCy+modeButtonRad, name="Mode", color="#f46e15")
+    data.openMenuButton = ImageButton(0, 0, name="Menu", img="menuIcon.png")
 
     data.activeButtons.append(data.startButton)
     data.activeButtons.append(data.modeButton)

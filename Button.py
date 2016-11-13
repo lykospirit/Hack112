@@ -4,9 +4,10 @@ from PIL import Image
 class Button(object):
     font = "Helvetica 24 bold"
 
-    def __init__(self, l, t, r, b, name="", parent=""):
+    def __init__(self, l, t, r, b, name="", parent="", color=""):
         self.name = name
         self.parent = parent
+        self.color = color
         self.l = l
         self.t = t
         self.r = r
@@ -21,13 +22,11 @@ class Button(object):
         return False
 
     def drawButton(self, canvas):
-        canvas.create_rectangle(self.l, self.t, self.r, self.b, fill="cyan")
-        if self.name:
-            canvas.create_text(self.cx, self.cy, text=self.name, font=Button.font)
+        canvas.create_rectangle(self.l, self.t, self.r, self.b, fill=self.color, width=0)
 
 class CircleButton(Button):
-    def __init__(self, l, t, r, b, name="", parent=""):
-        super().__init__(l, t, r, b, name, parent)
+    def __init__(self, l, t, r, b, name="", parent="", color=""):
+        super().__init__(l, t, r, b, name, parent, color)
         self.radius = (r-l)//2
 
     def isPressed(self, x, y):
@@ -37,19 +36,21 @@ class CircleButton(Button):
         return False
 
     def drawButton(self, canvas):
-        canvas.create_oval(self.l, self.t, self.r, self.b, fill="cyan")
-        if self.name:
-            canvas.create_text(self.cx, self.cy, text=self.name, font=Button.font)
+        canvas.create_oval(self.l, self.t, self.r, self.b, fill=self.color, width=0)
 
 class ImageButton(Button):
-    def __init__(self, l, t, name="", parent="", img=""):
+    def __init__(self, l, t, img, name="", parent=""):
         self.img = PhotoImage(file=img)
-        self.imgWidth = Image.open(img).size[0]
-        self.imgHeight = Image.open(img).size[1]
+        im = Image.open(img)
+        self.imgWidth, self.imgHeight = im.size
         super().__init__(l, t, l+self.imgWidth, t+self.imgHeight, name, parent)
 
     def drawButton(self, canvas):
         canvas.create_image(self.l, self.t, anchor=NW, image=self.img)
-        if self.name:
-            canvas.create_text(self.l+self.imgWidth/2, self.t+self.imgHeight/2,
-                                                text=self.name, font=Button.font)
+
+class ImageCircleButton(ImageButton):
+    def isPressed(self, x, y):
+        dist = ((self.cx - x)**2 + (self.cy - y)**2)**0.5
+        if dist <= self.radius:
+            return True
+        return False

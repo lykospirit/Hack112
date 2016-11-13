@@ -3,7 +3,6 @@
 #####
 
 from Button import *
-from Sensors import *
 
 def initReps(data):
     data.reps = 0
@@ -31,7 +30,3 @@ def drawReps(canvas, data):
                         font = "Helvetica 36 bold", fill="black")
     canvas.create_text(240, 30, text="Touch anywhere to end.", fill="blue",
                             font="Helvetica 16")
-
-
-
-

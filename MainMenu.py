@@ -3,7 +3,6 @@
 #####
 
 from Button import *
-from Sensors import *
 
 def initMainMenu(data):
     pass

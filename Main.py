@@ -3,28 +3,34 @@
 #####
 
 from Button import *
-from Sensors import *
+from MainMenu import *
+from ModeMenu import *
 
 def initMain(data):
-    startButtonRad = 120
+    startButtonRad = 110
     startButtonCx = 240
-    startButtonCy = 160
-    modeButtonRad = 55
+    startButtonCy = 140
+    modeButtonRad = 35
     modeButtonCx = 360
-    modeButtonCy = 240
+    modeButtonCy = 200
+    modeButtonImg = "%s.png" % data.workoutMode
     data.startButton = CircleButton(startButtonCx-startButtonRad, startButtonCy-startButtonRad,
         startButtonCx+startButtonRad, startButtonCy+startButtonRad, name="Start", color="#06a8ac")
-    data.modeButton = CircleButton(modeButtonCx-modeButtonRad, modeButtonCy-modeButtonRad,
-        modeButtonCx+modeButtonRad, modeButtonCy+modeButtonRad, name="Mode", color="#f46e15")
+    data.modeButton = ImageCircleButton(modeButtonCx-modeButtonRad, modeButtonCy-modeButtonRad,
+                                                    name="Mode", img=modeButtonImg)
     data.openMenuButton = ImageButton(0, 0, name="Menu", img="menuIcon.png")
+
+    data.activeButtons = []
     data.activeButtons.append(data.startButton)
     data.activeButtons.append(data.modeButton)
     data.activeButtons.append(data.openMenuButton)
 
 def mainMousePressed(event, data, button):
     if button.name == 'Menu':
+        initMainMenu(data)
         data.mainMenuActive = True
     elif button.name == 'Mode':
+        initModeMenu(data)
         data.modeMenuActive = True
     elif button.name == 'Start':
         data.mode = 'workout'

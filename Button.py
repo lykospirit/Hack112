@@ -52,6 +52,7 @@ class ImageCircleButton(ImageButton):
     def __init__(self, l, t, img, name="", parent=""):
         super().__init__(l, t, img, name, parent)
         self.cx, self.cy = l+self.imgWidth//2, t+self.imgHeight//2
+        self.radius = self.imgWidth//2
 
     def isPressed(self, x, y):
         dist = ((self.cx - x)**2 + (self.cy - y)**2)**0.5

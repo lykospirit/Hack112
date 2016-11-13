@@ -3,7 +3,6 @@
 #####
 
 from Button import *
-from Sensors import *
 from PIL import Image
 
 def initGame(data):

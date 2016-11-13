@@ -3,7 +3,6 @@
 #####
 
 from Button import *
-from Sensors import *
 import time
 
 def initHang(data):
@@ -36,5 +35,3 @@ def drawTime(canvas, data):
                         font="Helvetica 40 bold", fill=data.hangTimeColor)
     canvas.create_text(240, 30, text="Touch anywhere to end.", fill="blue",
                             font="Helvetica 16")
-
-

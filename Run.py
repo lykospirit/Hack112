@@ -8,7 +8,7 @@ from Main import *
 from Workout import *
 from ModeMenu import *
 from MainMenu import *
-from Sensors import *
+# from Sensors import *
 from PIL import Image
 
 #####
@@ -22,7 +22,7 @@ def keyPressed(event, data): #TEMPTEMPTEMPTEMP
         data.distance += 10
 
 def timerFired(data):
-    data.distance = getDistance()
+    # data.distance = getDistance()
     if data.mode == "workout": workoutTimerFired(data)
 
 def init(data):
@@ -30,29 +30,30 @@ def init(data):
     data.activeButtons = []
     data.mainMenuActive = False
     data.modeMenuActive = False
+    data.mode = "main"
+    data.workoutMode = "hang"
+    data.backgroundColor = "#f9feff"
 
     data.upThreshold = 25
     data.position = "Down"
-    data.distance = getDistance()
-    
+    # data.distance = getDistance()
+
     data.obstacleImage = PhotoImage(file="Obstacles.png")
 
     initMain(data)
-    initMainMenu(data)
-    initModeMenu(data)
-
-    data.backgroundColor = "#f9feff"
-
-    data.mode = "main"
     initWorkout(data)
 
+
+
 def mousePressed(event, data):
+    print(len(data.activeButtons))
     for button in range(len(data.activeButtons)-1, -1, -1):
         if data.activeButtons[button].isPressed(event.x, event.y):
             print(data.activeButtons[button].name)
             if data.mode == "main":
                 if data.activeButtons[button].parent == "ModeMenu":
                     modeMenuMousePressed(event, data, data.activeButtons[button])
+                    initMain(data)
                 elif data.activeButtons[button].parent == "MainMenu":
                     mainMenuMousePressed(event, data, data.activeButtons[button])
                 else:

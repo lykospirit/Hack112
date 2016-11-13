@@ -18,7 +18,7 @@ def keyPressed(event, data):
 
 def timerFired(data):
     if data.mode == "workout": workoutTimerFired(data)
-        
+
 def init(data):
     data.mode = "main"
     data.activeButtons = []
@@ -30,6 +30,7 @@ def init(data):
     initWorkout(data) # TEMPTEMPTEMPTEMPTEMPTEMp
 
 def mousePressed(event, data):
+    print(data.test.isPressed(event.x, event.y))
     for button in range(0, len(data.activeButtons), -1):
         if data.activeButtons[button].isPressed(event.x, event.y):
             if data.mode == "main":
@@ -45,6 +46,8 @@ def mousePressed(event, data):
 
 def redrawAll(canvas, data):
     canvas.create_rectangle(0, 0, data.width, data.height, fill="white")
+    data.test = ImageButton(10, 10, img="yogurt.gif")
+    data.test.drawButton(canvas)
     if (data.mode == "main"):
         mainRedrawAll(canvas, data)
         if (data.modeMenuActive == True):

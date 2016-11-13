@@ -40,6 +40,9 @@ def init(data):
 
     data.backgroundColor = "#f9feff"
     
+    data.mode = "workout"
+    initWorkout(data)
+    
 
 def mousePressed(event, data):
     for button in range(len(data.activeButtons)-1, -1, -1):
